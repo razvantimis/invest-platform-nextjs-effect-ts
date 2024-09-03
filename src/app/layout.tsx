@@ -4,17 +4,17 @@ import { GeistSans } from "geist/font/sans";
 import { type Viewport, type Metadata } from "next";
 
 import { TRPCReactProvider } from "@/trpc/react";
-import { APP_TITLE } from "@/lib/constants";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import { appConfig } from "@/app-config";
 
 export const metadata: Metadata = {
   title: {
-    default: APP_TITLE,
-    template: `%s | ${APP_TITLE}`,
+    default: appConfig.appTitle,
+    template: `%s | ${appConfig.appTitle}`,
   },
-  description: "Invest platform | Learn about your stocks",
+  description: appConfig.appDescription,
   icons: [{ rel: "icon", url: "/icon.png" }],
 };
 
