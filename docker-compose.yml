@@ -1,4 +1,17 @@
 services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_CLIENTVAR: "clientvar"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/invest-platform
+
   postgres:
     image: postgres:16-alpine
     ports:
