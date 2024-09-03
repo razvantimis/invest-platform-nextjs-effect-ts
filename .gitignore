@@ -47,3 +47,6 @@ yarn-error.log*
 
 # docker volume
 postgres-data
+
+# log
+application.log

@@ -28,3 +28,17 @@ export const authenticatedAction = serverActionProcedure.use(() => {
   //   },
   // });
 });
+
+
+// types
+
+/**
+ * Temporary little type hack to cast a trpc action
+ * when passing the action to `useActionState`
+ * @example useActionState(createBoard as MakeAction<typeof createBoard>)
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type MakeAction<T> = T extends (...args: any[]) => Promise<infer U>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ? (state: any, fd: FormData) => Promise<U>
+  : never

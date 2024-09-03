@@ -5,9 +5,9 @@ import { type Viewport, type Metadata } from "next";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { appConfig } from "@/app-config";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: {

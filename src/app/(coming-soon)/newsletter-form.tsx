@@ -1,6 +1,4 @@
 "use client";
-
-// import { subscribeEmailAction } from "@/app/(coming-soon)/actions";
 import { LoaderButton } from "@/components/loader-button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
@@ -8,27 +6,26 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/hooks/use-toast";
 import { Terminal } from "lucide-react";
 import { useRef } from "react";
+import { api } from "@/trpc/react";
 // import { useServerAction } from "zsa-react";
 
 export function NewsletterForm() {
   const { toast } = useToast();
 
   const ref = useRef<HTMLFormElement>(null);
-  // const { execute, status, isError, error } = useServerAction(
-  //   subscribeEmailAction,
-  //   {
-  //     onSuccess() {
-  //       ref.current?.reset();
-  //       toast({
-  //         title: "Success",
-  //         description: "You have been subscribed to our newsletter.",
-  //       });
-  //     },
-  //     onError({ err }) {
-  //       console.log("error", err.message);
-  //     },
-  //   }
-  // );
+  const { mutateAsync, isError, error, status } =
+    api.email.subscribeEmail.useMutation({
+      onSuccess: () => {
+        ref.current?.reset();
+        toast({
+          title: "Success",
+          description: "You have been subscribed to our newsletter.",
+        });
+      },
+      onError(err) {
+        console.log("error", err.message);
+      },
+    });
 
   return (
     <>
@@ -40,7 +37,7 @@ export function NewsletterForm() {
           const form = event.target as HTMLFormElement;
           const formData = new FormData(form);
           const email = formData.get("email") as string;
-          // await execute({ email });
+          await mutateAsync({ email });
         }}
       >
         <Label className="sr-only" htmlFor="email" />
@@ -67,13 +64,13 @@ export function NewsletterForm() {
           </Alert>
         )}
 
-        {/* {isError && (
+        {isError && (
           <Alert variant="destructive">
             <Terminal className="h-4 w-4" />
             <AlertTitle>Something went wrong</AlertTitle>
             <AlertDescription>{error.message}</AlertDescription>
           </Alert>
-        )} */}
+        )}
       </div>
     </>
   );
