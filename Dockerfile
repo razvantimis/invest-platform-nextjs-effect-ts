@@ -16,7 +16,7 @@ RUN npm install -g pnpm && pnpm i
 
 FROM node:20-alpine AS builder
 ARG DATABASE_URL
-# ARG NEXT_PUBLIC_CLIENTVAR
+ARG NEXT_PUBLIC_APP_URL
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
