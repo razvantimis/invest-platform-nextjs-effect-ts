@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Lines } from "@/app/(coming-soon)/coming-soon";
 import {
   DiscordIcon,
@@ -5,7 +7,6 @@ import {
   XIcon,
   YoutubeIcon,
 } from "@/components/icons";
-import Link from "next/link";
 
 export function ComingSoonFooter() {
   return (

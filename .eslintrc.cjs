@@ -55,7 +55,27 @@ const config = {
           "ctx.db"
         ]
       }
-    ]
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["./*", "../*"]  // Restricts any relative path imports
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["builtin", "external"],
+          ["internal", "parent", "sibling", "index"]
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
   }
 }
 module.exports = config;

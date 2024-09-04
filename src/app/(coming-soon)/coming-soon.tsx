@@ -1,6 +1,7 @@
+import Image from "next/image";
+
 import { ComingSoonHeader } from "@/app/(coming-soon)/header";
 import { NewsletterForm } from "@/app/(coming-soon)/newsletter-form";
-import Image from "next/image";
 
 export function Lines() {
   return (

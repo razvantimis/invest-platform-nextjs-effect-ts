@@ -1,7 +1,8 @@
-import { ModeToggle } from "@/components/mode-toggle";
-import { applicationName } from "@/app-config";
 import Image from "next/image";
 import Link from "next/link";
+
+import { applicationName } from "@/app-config";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export function ComingSoonHeader() {
   return (

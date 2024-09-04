@@ -1,13 +1,15 @@
 "use client";
-import { LoaderButton } from "@/components/loader-button";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/hooks/use-toast";
 import { Terminal } from "lucide-react";
 import { useRef } from "react";
 import { useServerAction } from "zsa-react";
-import { subscribeEmailAction } from "./actions";
+
+import { subscribeEmailAction } from "@/app/(coming-soon)/actions";
+import { LoaderButton } from "@/components/loader-button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { useToast } from "@/components/ui/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
 
 export function NewsletterForm() {
   const { toast } = useToast();

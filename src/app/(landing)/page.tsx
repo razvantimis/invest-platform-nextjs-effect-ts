@@ -1,5 +1,5 @@
+import { ComingSoon } from "@/app/(coming-soon)/coming-soon";
 import { appConfig } from "@/app-config";
-import { ComingSoon } from "../(coming-soon)/coming-soon";
 
 export default async function Home() {
   if (appConfig.mode === "comingSoon") {

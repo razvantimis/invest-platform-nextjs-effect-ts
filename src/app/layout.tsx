@@ -3,10 +3,10 @@ import "@/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 import { type Viewport, type Metadata } from "next";
 
-import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/lib/utils";
 import { appConfig } from "@/app-config";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: {
