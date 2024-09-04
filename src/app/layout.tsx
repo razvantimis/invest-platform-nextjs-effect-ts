@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 import { type Viewport, type Metadata } from "next";
 
-import { TRPCReactProvider } from "@/trpc/react";
+import { TRPCReactProvider } from "@/lib/trpc/react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { appConfig } from "@/app-config";

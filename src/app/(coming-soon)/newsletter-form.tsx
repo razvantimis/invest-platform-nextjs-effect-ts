@@ -6,26 +6,28 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/hooks/use-toast";
 import { Terminal } from "lucide-react";
 import { useRef } from "react";
-import { api } from "@/trpc/react";
-// import { useServerAction } from "zsa-react";
+import { useServerAction } from "zsa-react";
+import { subscribeEmailAction } from "./actions";
 
 export function NewsletterForm() {
   const { toast } = useToast();
 
   const ref = useRef<HTMLFormElement>(null);
-  const { mutateAsync, isError, error, status } =
-    api.email.subscribeEmail.useMutation({
-      onSuccess: () => {
+  const { execute, status, isError, error } = useServerAction(
+    subscribeEmailAction,
+    {
+      onSuccess() {
         ref.current?.reset();
         toast({
           title: "Success",
           description: "You have been subscribed to our newsletter.",
         });
       },
-      onError(err) {
+      onError({ err }) {
         console.log("error", err.message);
       },
-    });
+    }
+  );
 
   return (
     <>
@@ -37,7 +39,7 @@ export function NewsletterForm() {
           const form = event.target as HTMLFormElement;
           const formData = new FormData(form);
           const email = formData.get("email") as string;
-          await mutateAsync({ email });
+          await execute({ email });
         }}
       >
         <Label className="sr-only" htmlFor="email" />
