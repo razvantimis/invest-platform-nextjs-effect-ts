@@ -1,5 +1,7 @@
 import { Config, ConfigProvider, Effect, Layer, Logger, LogLevel } from "effect";
 
+import { ResendEmailServiceLive } from "@/service/resend-email.service";
+
 export const appConfig: {
   mode: "comingSoon" | "maintenance" | "live";
   appTitle: string;
@@ -25,4 +27,6 @@ export const AppConfigLive = Layer.provide(
   Layer.setConfigProvider(
     ConfigProvider.fromMap(new Map([["LOG_LEVEL", LogLevel.Debug.label]]))
   )
+).pipe(
+  Layer.provideMerge(ResendEmailServiceLive)
 );

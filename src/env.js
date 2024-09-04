@@ -11,6 +11,12 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    EMAIL_FROM: z.string().min(1),
+    EMAIL_SERVER_HOST: z.string().min(1),
+    EMAIL_SERVER_PORT: z.string().min(1),
+    EMAIL_SERVER_USER: z.string().min(1),
+    EMAIL_SERVER_PASSWORD: z.string().min(1),
+    RESEND_AUDIENCE_ID: z.string().min(1),
   },
 
   /**
@@ -29,6 +35,12 @@ export const env = createEnv({
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
+    EMAIL_SERVER_PASSWORD: process.env.EMAIL_SERVER_PASSWORD,
+    EMAIL_FROM: process.env.EMAIL_FROM,
+    EMAIL_SERVER_HOST: process.env.EMAIL_SERVER_HOST,
+    EMAIL_SERVER_PORT: process.env.EMAIL_SERVER_PORT,
+    EMAIL_SERVER_USER: process.env.EMAIL_SERVER_USER,
+    RESEND_AUDIENCE_ID: process.env.RESEND_AUDIENCE_ID,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
   },
   /**

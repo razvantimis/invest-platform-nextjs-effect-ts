@@ -5,7 +5,7 @@ import { newsletters } from "@/db/schema";
 import {
   NewsletterRepository,
   type INewsletterRepository,
-} from "@/features/newsletter/repository";
+} from "@/features/newsletter/newsletter.repository";
 
 const implementation: INewsletterRepository = {
   insertEmail: (email: string) =>
